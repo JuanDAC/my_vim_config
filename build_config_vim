@@ -1,16 +1,17 @@
 #!/usr/bin/env bash
 
+readonly PATH_HOME='~/'
 readonly PATH_INIT='~/.config/vim/'
 readonly PATH_SRC_UTILS='~/.vim/src/utils/'
 readonly PATH_SRC_SETTING_PLUGINS='~/.vim/src/setting_plugins/'
 readonly PATH_SRC='~/.vim/src/'
 
+mkdir -p $PATH_HOME
 mkdir -p $PATH_INIT
 mkdir -p $PATH_SRC
 mkdir -p $PATH_SRC_UTILS
 mkdir -p $PATH_SRC_SETTING_PLUGINS
 
-wget --directory-prefix=$PATH_INIT
-wget --directory-prefix=$PATH_SRC
-wget --directory-prefix=$PATH_SRC_UTILS
-wget --directory-prefix=$PATH_SRC_SETTING_PLUGINS
+wget --directory-prefix=$PATH_INIT 'https://raw.githubusercontent.com/JuanDAC/my_vim_config/main/init.vim'
+wget --directory-prefix=$PATH_HOME 'https://raw.githubusercontent.com/JuanDAC/my_vim_config/main/.vimrc'
+wget -r --directory-prefix=$PATH_SRC 'https://raw.githubusercontent.com/JuanDAC/my_vim_config/main/src/'
