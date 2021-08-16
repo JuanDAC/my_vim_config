@@ -9,6 +9,10 @@ readonly PATH_FILES=('events.vim' 'features.vim' 'index.vim' 'load_plugins.vim' 
 'setting_plugins/ale.vim' 'setting_plugins/coc.vim' 'setting_plugins/emmet.vim' 'setting_plugins/index.vim' 'setting_plugins/nerd_tree.vim' \
 'utils/index.vim' 'utils/string.vim')
 
+rm -rf $PATH_SRC
+rm -f "${PATH_HOME}.vimrc"
+rm -f "${PATH_SRC}init.vim"
+
 mkdir -p $PATH_HOME
 mkdir -p $PATH_INIT
 mkdir -p $PATH_SRC
