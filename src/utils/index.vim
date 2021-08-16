@@ -1,3 +1,3 @@
 
-source './string.vim'
+source ./string.vim
 
