@@ -1,10 +1,13 @@
 #!/usr/bin/env bash
 
-readonly PATH_HOME='~/'
-readonly PATH_INIT='~/.config/vim/'
-readonly PATH_SRC_UTILS='~/.vim/src/utils/'
-readonly PATH_SRC_SETTING_PLUGINS='~/.vim/src/setting_plugins/'
-readonly PATH_SRC='~/.vim/src/'
+readonly PATH_HOME="${HOME}/"
+readonly PATH_INIT="${HOME}/.config/vim/"
+readonly PATH_SRC_UTILS="${HOME}/.vim/src/utils/"
+readonly PATH_SRC_SETTING_PLUGINS="${HOME}/.vim/src/setting_plugins/"
+readonly PATH_SRC="${HOME}/.vim/src/"
+readonly PATH_FILES=('events.vim' 'features.vim' 'index.vim' 'load_plugins.vim' 'scheme.vim' 'settings.vim' 'variables.vim' \
+'setting_plugins/ale.vim' 'setting_plugins/coc.vim' 'setting_plugins/emmet.vim' 'setting_plugins/index.vim' 'setting_plugins/nerd_tree.vim' \
+'utils/index.vim' 'utils/string.vim')
 
 mkdir -p $PATH_HOME
 mkdir -p $PATH_INIT
@@ -14,4 +17,7 @@ mkdir -p $PATH_SRC_SETTING_PLUGINS
 
 wget --directory-prefix=$PATH_INIT 'https://raw.githubusercontent.com/JuanDAC/my_vim_config/main/init.vim'
 wget --directory-prefix=$PATH_HOME 'https://raw.githubusercontent.com/JuanDAC/my_vim_config/main/.vimrc'
-wget -r --directory-prefix=$PATH_SRC 'https://raw.githubusercontent.com/JuanDAC/my_vim_config/main/src/'
+
+for i in ${!PATH_FILES[@]}; do
+	wget -O "${PATH_SRC}${PATH_FILES[$i]}" "https://raw.githubusercontent.com/JuanDAC/my_vim_config/main/src/${PATH_FILES[$i]}"
+done
