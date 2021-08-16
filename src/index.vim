@@ -1,0 +1,10 @@
+set encoding=utf-8
+scriptencoding utf-8
+source './utils/index.vim'
+source './settings.vim'
+source './features.vim'
+source './load_plugins.vim'
+source './setting_plugins/index.vim'
+source './mappings.vim'
+source './scheme.vim'
+source './events.vim'

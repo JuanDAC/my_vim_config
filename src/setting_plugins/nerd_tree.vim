@@ -1,0 +1,3 @@
+
+let NERDTreeQuitOnOpen=1
+
