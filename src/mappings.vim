@@ -1,3 +1,4 @@
+
 " Tabs keys
 nnoremap <Leader>t :tabnew
 nnoremap <Leader>l :tabnext<CR>
@@ -63,5 +64,3 @@ endfunction
 
 " source vimrc
 :nnoremap <leader>sv :source $MYVIMRC<cr>
-
-
