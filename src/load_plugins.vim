@@ -2,8 +2,13 @@ set encoding=utf-8
 scriptencoding utf-8
 
 " Plugins installed with plug *************************
-call LoadPluguins()
-PlugInstall
+
+function! Main()
+    call LoadPluguins()
+    PlugClean -y
+    PlugInstall
+    :q
+endfunction
 
 
 function! LoadPluguins()
@@ -11,7 +16,7 @@ function! LoadPluguins()
 
     " Themes
     Plug 'morhetz/gruvbox'
-    "Plug 'flazz/vim-colorschemes'
+    " Plug 'flazz/vim-colorschemes'
 
     " IDE
     Plug 'easymotion/vim-easymotion'
@@ -39,3 +44,4 @@ function! LoadPluguins()
     call plug#end()
 endfunction
 
+call LoadPluguins()

@@ -2,9 +2,9 @@
 
 readonly PATH_HOME="${HOME}/"
 readonly PATH_INIT="${HOME}/.config/vim/"
+readonly PATH_SRC="${HOME}/.vim/src/"
 readonly PATH_SRC_UTILS="${HOME}/.vim/src/utils/"
 readonly PATH_SRC_SETTING_PLUGINS="${HOME}/.vim/src/setting_plugins/"
-readonly PATH_SRC="${HOME}/.vim/src/"
 
 if [ "$(which nvim | wc --bytes)" -eq 0]; then
 	apt-get update & apt-get -y install neovim & sudo apt-get -y install python-neovim & sudo apt-get -y install python3-neovim
