@@ -1,8 +1,8 @@
 
 " Tabs keys
-nnoremap <Leader>t :tabnew
-nnoremap <Leader>l :tabnext<CR>
-nnoremap <Leader>h :tabprevious<CR>
+nnoremap T :tabnew
+nnoremap L :tabnext<CR>
+nnoremap H :tabprevious<CR>
 
 nnoremap <Leader>s <Plug>(easymotion-s2)
 nnoremap <Leader>nt :NERDTreeFind<CR>
@@ -11,7 +11,7 @@ nnoremap <Leader>W :wa<CR>
 nnoremap <Leader>q :q<CR>
 nnoremap <Leader>Q :qa<CR>
 nnoremap <Leader>e :e
-vmap <Leader>y :call YTC()<CR>
+vmap Y :call YTC()<CR>
 
 nnoremap <up> <nop>
 nnoremap <down> <nop>
