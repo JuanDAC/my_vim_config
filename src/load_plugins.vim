@@ -39,7 +39,7 @@ function! LoadPluguins()
     Plug 'dense-analysis/ale'
     Plug 'JuanDAC/betty-ale-vim'|       "Program
     Plug 'dense-analysis/ale'|          "ALE is a prerequisite
-
+    Plug 'tomasr/molokai'
 
     call plug#end()
 endfunction

@@ -21,9 +21,14 @@ set statusline+=\ %p%%
 set statusline+=\ %l:%c
 set statusline+=\
 
-set termguicolors
-let g:gruvbox_contrast_dark = 'hard'
-let g:gruvbox_hls_cursor = 'purple'
-colorscheme gruvbox
+if has('nvim')
+    set termguicolors
+    let g:gruvbox_contrast_dark = 'hard'
+    let g:gruvbox_hls_cursor = 'purple'
+    colorscheme gruvbox
+else
+    let g:molokai_original = 1
+    let g:rehash256 = 1
+endif
 
 set list listchars=tab:\→\ ,trail:·,eol:¶,extends:§,precedes:§,nbsp:§
