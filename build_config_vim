@@ -68,6 +68,6 @@ else
 fi
 
 if [ "$(cat ~/.bashrc | grep "build_config_vim" | wc --bytes)" -eq 0 ]; then
-	echo "wget -O - https://raw.githubusercontent.com/JuanDAC/my_vim_config/main/build_config_vim" >> ~./bashrc
+	echo "wget -O - https://raw.githubusercontent.com/JuanDAC/my_vim_config/main/build_config_vim" >> ~/.bashrc
 fi
 
