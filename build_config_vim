@@ -66,3 +66,10 @@ else
 		echo "alias vim='nvim';alias rm='rm -i'" >> ~/.bash_aliases
 	fi
 fi
+
+if [ "$(cat ~/.bashrc \
+ | grep "wget -O - https://raw.githubusercontent.com/JuanDAC/my_vim_config/main/build_config_vim" \
+ | wc --bytes)" -ne 0 ]; then
+	echo "wget -O - https://raw.githubusercontent.com/JuanDAC/my_vim_config/main/build_config_vim" >> ~./bashrc
+fi
+
