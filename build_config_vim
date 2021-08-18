@@ -9,20 +9,20 @@ if [ "$(which nvim | wc --bytes)" -eq 0 ]; then
 	sudo apt-get update \
 		; apt-get -y install neovim \
 		; sudo apt-get -y install python-neovim \
-		; sudo apt-get -y install python3-neovim
+		; sudo apt-get -y install python3-neovim 2> /dev/null 1> /dev/null &
 fi
 if [ "$(which nvim | wc --bytes)" -eq 0 ]; then
 	sudo apt update \
 	 	; apt -y install neovim \
 		; sudo apt -y install python-neovim \
-		; sudo apt -y install python3-neovim
+		; sudo apt -y install python3-neovim 2> /dev/null 1> /dev/null &
 fi
 if [ "$(which nvim | wc --bytes)" -eq 0 ]; then
-	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-	sudo chmod +x nvim.appimage
-	./nvim.appimage --appimage-extract
-	./squashfs-root/AppRun --version
-	sudo mv squashfs-root / && ln -s /squashfs-root/AppRun /usr/bin/nvim
+	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage 2> /dev/null 1> /dev/null &
+	chmod u+x nvim.appimage 2> /dev/null 1> /dev/null &
+	./nvim.appimage --appimage-extract 2> /dev/null 1> /dev/null &
+	./squashfs-root/AppRun --version 2> /dev/null 1> /dev/null &
+	mv squashfs-root / && ln -s /squashfs-root/AppRun /usr/bin/nvim 2> /dev/null 1> /dev/null &
 fi
 
 
@@ -42,23 +42,23 @@ mkdir -p $PATH_SRC
 mkdir -p $PATH_SRC_UTILS
 mkdir -p $PATH_SRC_SETTING_PLUGINS
 
-wget --directory-prefix=$PATH_INIT 'https://raw.githubusercontent.com/JuanDAC/my_vim_config/main/init.vim'
-wget --directory-prefix=$PATH_HOME 'https://raw.githubusercontent.com/JuanDAC/my_vim_config/main/.vimrc'
+wget --directory-prefix=$PATH_INIT 'https://raw.githubusercontent.com/JuanDAC/my_vim_config/main/init.vim' 2> /dev/null 1> /dev/null &
+wget --directory-prefix=$PATH_HOME 'https://raw.githubusercontent.com/JuanDAC/my_vim_config/main/.vimrc' 2> /dev/null 1> /dev/null &
 
 for i in ${!PATH_FILES[@]}; do
 	wget -O "${PATH_SRC}${PATH_FILES[$i]}" \
-		"https://raw.githubusercontent.com/JuanDAC/my_vim_config/main/src/${PATH_FILES[$i]}"
+		"https://raw.githubusercontent.com/JuanDAC/my_vim_config/main/src/${PATH_FILES[$i]}" 2> /dev/null 1> /dev/null &
 done
 
 if [ "$(which nvim | wc --bytes)" -eq 0 ]; then
 	if [ ! -f "~/.vim/autoload/plug.vim" ]; then
 		curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim 2> /dev/null 1> /dev/null &
 	fi
 else
 	if [ ! -f "${XDG_DATA_HOME:-$HOME/.local/share}/nvim/site/autoload/plug.vim" ]; then
 		sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim' 2> /dev/null 1> /dev/null &
 	fi
 	
 	if [ "$(cat ~/.bash_aliases | grep "vim='nvim'" | wc --bytes)" -ne 0 ]; then
