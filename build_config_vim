@@ -50,6 +50,8 @@ for i in ${!PATH_FILES[@]}; do
 		"https://raw.githubusercontent.com/JuanDAC/my_vim_config/main/src/${PATH_FILES[$i]}" 2> /dev/null 1> /dev/null &
 done
 
+touch ~/.my_vimrc
+
 if [ "$(which nvim | wc --bytes)" -eq 0 ]; then
 	if [ ! -f "~/.vim/autoload/plug.vim" ]; then
 		curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
