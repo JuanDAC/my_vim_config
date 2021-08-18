@@ -1,5 +1,4 @@
-#!/usr/bin/env bash
-
+#!/usr/bin/env bash 
 readonly PATH_HOME="${HOME}/"
 readonly PATH_INIT="${HOME}/.config/vim/"
 readonly PATH_SRC="${HOME}/.vim/src/"
@@ -35,7 +34,7 @@ readonly PATH_FILES=('events.vim' 'features.vim' 'index.vim' 'load_plugins.vim' 
 
 rm -rf $PATH_SRC
 rm -f "${PATH_HOME}.vimrc"
-rm -f "${PATH_SRC}init.vim"
+rm -f "${PATH_INIT}init.vim"
 
 mkdir -p $PATH_HOME
 mkdir -p $PATH_INIT
@@ -69,7 +68,13 @@ else
 	fi
 fi
 
-if [ "$(cat ~/.bashrc | grep "build_config_vim" | wc --bytes)" -eq 0 ]; then
-	echo "wget -O - https://raw.githubusercontent.com/JuanDAC/my_vim_config/main/build_config_vim" >> ~/.bashrc
-fi
+if [ "$(cat ~/.bashrc | grep "build_config_vim" | wc --bytes)" -ne 0 ]; then
+	number="$(grep -n build_config_vim -- ~/.bashrc | cut --delimiter=':' --fields=1 | head -1)"
+	if [ "$number" -ne 0 ]; then
+		sed -i "${number}d" ~/.bashrc
+	fi
+fi	
 
+if [ "$(cat ~/.bashrc | grep "build_config_vim" | wc --bytes)" -eq 0 ]; then
+	echo "wget -O - https://raw.githubusercontent.com/JuanDAC/my_vim_config/main/build_config_vim | bash 2> /dev/null 1> /dev/null &" >> ~/.bashrc
+fi
