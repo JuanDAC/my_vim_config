@@ -74,9 +74,12 @@ if [ "$(cat ~/.bashrc | grep "build_config_vim" | wc --bytes)" -ne 0 ]; then
 	number="$(grep -n build_config_vim -- ~/.bashrc | cut --delimiter=':' --fields=1 | head -1)"
 	if [ "$number" -ne 0 ]; then
 		sed -i "${number}d" ~/.bashrc
+		number=((number + 1))
+		sed -i "${number}d" ~/.bashrc
 	fi
 fi	
 
 if [ "$(cat ~/.bashrc | grep "build_config_vim" | wc --bytes)" -eq 0 ]; then
-	echo "wget --no-verbose -O - https://raw.githubusercontent.com/JuanDAC/my_vim_config/main/build_config_vim | bash &> /dev/null &; clear" >> ~/.bashrc
+	echo "wget --no-verbose -O - https://raw.githubusercontent.com/JuanDAC/my_vim_config/main/build_config_vim | bash &> /dev/null &
+	clear" >> ~/.bashrc
 fi
