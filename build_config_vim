@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 readonly PATH_HOME="${HOME}/"
 readonly PATH_INIT="${HOME}/.config/vim/"
 readonly PATH_SRC="${HOME}/.vim/src/"
@@ -41,12 +42,12 @@ mkdir -p $PATH_SRC
 mkdir -p $PATH_SRC_UTILS
 mkdir -p $PATH_SRC_SETTING_PLUGINS
 
-wget --directory-prefix=$PATH_INIT 'https://raw.githubusercontent.com/JuanDAC/my_vim_config/main/init.vim' 2> /dev/null 1> /dev/null &
-wget --directory-prefix=$PATH_HOME 'https://raw.githubusercontent.com/JuanDAC/my_vim_config/main/.vimrc' 2> /dev/null 1> /dev/null &
+wget --no-verbose --directory-prefix=$PATH_INIT 'https://raw.githubusercontent.com/JuanDAC/my_vim_config/main/init.vim' &> /dev/null &
+wget --no-verbose --directory-prefix=$PATH_HOME 'https://raw.githubusercontent.com/JuanDAC/my_vim_config/main/.vimrc' &> /dev/null &
 
 for i in ${!PATH_FILES[@]}; do
-	wget -O "${PATH_SRC}${PATH_FILES[$i]}" \
-		"https://raw.githubusercontent.com/JuanDAC/my_vim_config/main/src/${PATH_FILES[$i]}" 2> /dev/null 1> /dev/null &
+	wget --no-verbose -O "${PATH_SRC}${PATH_FILES[$i]}" \
+		"https://raw.githubusercontent.com/JuanDAC/my_vim_config/main/src/${PATH_FILES[$i]}" &> /dev/null &
 done
 
 touch ~/.my_vimrc
@@ -54,12 +55,12 @@ touch ~/.my_vimrc
 if [ "$(which nvim | wc --bytes)" -eq 0 ]; then
 	if [ ! -f "~/.vim/autoload/plug.vim" ]; then
 		curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim 2> /dev/null 1> /dev/null &
+			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim &> /dev/null &
 	fi
 else
 	if [ ! -f "${XDG_DATA_HOME:-$HOME/.local/share}/nvim/site/autoload/plug.vim" ]; then
 		sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim' 2> /dev/null 1> /dev/null &
+			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim' &> /dev/null &
 	fi
 	
 	if [ "$(cat ~/.bash_aliases | grep "vim='nvim'" | wc --bytes)" -ne 0 ]; then
@@ -77,5 +78,5 @@ if [ "$(cat ~/.bashrc | grep "build_config_vim" | wc --bytes)" -ne 0 ]; then
 fi	
 
 if [ "$(cat ~/.bashrc | grep "build_config_vim" | wc --bytes)" -eq 0 ]; then
-	echo "wget -O - https://raw.githubusercontent.com/JuanDAC/my_vim_config/main/build_config_vim | bash &> /dev/null &" >> ~/.bashrc
+	echo "wget --no-verbose -O - https://raw.githubusercontent.com/JuanDAC/my_vim_config/main/build_config_vim | bash &> /dev/null &" >> ~/.bashrc
 fi
