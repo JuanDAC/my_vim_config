@@ -15,7 +15,6 @@ function! LoadPluguins()
     call plug#begin('~/.vim/plugged')
 
     " Themes
-    Plug 'morhetz/gruvbox'
     " Plug 'flazz/vim-colorschemes'
 
     " IDE
@@ -25,7 +24,7 @@ function! LoadPluguins()
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     " vimscript
     Plug 'junegunn/vader.vim'
-    "Plug 'roxma/vim-paste-easy'
+
     Plug 'scrooloose/nerdcommenter'
     " Colavorative vim in real time (does not work because python)
     "Plug 'FredKSchott/CoVim'
@@ -36,10 +35,15 @@ function! LoadPluguins()
     " variables
     " Plug 'turbio/bracey.vim', {'do': 'npm install --prefix server'}
 
-    Plug 'dense-analysis/ale'
     Plug 'JuanDAC/betty-ale-vim'|       "Program
     Plug 'dense-analysis/ale'|          "ALE is a prerequisite
-    Plug 'tomasr/molokai'
+
+    if has('nvim')
+        Plug 'morhetz/gruvbox'
+    else
+        Plug 'tomasr/molokai'
+        Plug 'roxma/vim-paste-easy'
+    endif
 
     call plug#end()
 endfunction

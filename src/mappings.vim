@@ -1,6 +1,6 @@
 
 " Tabs keys
-nnoremap T :tabnew
+nnoremap T :tabnew 
 nnoremap L :tabnext<CR>
 nnoremap H :tabprevious<CR>
 
