@@ -7,8 +7,8 @@ let g:ale_linters = {
 \   'c':['betty-style', 'betty-doc', 'gcc'],
 \   'vim':['ale_custom_linting_rules', 'vint'],
 \   'css': ['stylelint'],
-\   'bats': ['shellcheck'],
 \   'sh': ['shellcheck'],
 \   'bash': ['shellcheck'],
+\   'bats': ['shellcheck']
 \}
 
