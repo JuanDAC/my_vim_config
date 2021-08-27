@@ -5,6 +5,7 @@ let g:ale_css_stylelint_executable = '~/.nvm/versions/node/v14.17.5/bin/stylelin
 let g:ale_fix_on_save = 0
 let g:ale_linters = {
 \   'c':['betty-style', 'betty-doc', 'gcc'],
+\   'asm':['gcc'],
 \   'vim':['ale_custom_linting_rules', 'vint'],
 \   'css': ['stylelint'],
 \   'sh': ['shellcheck'],
