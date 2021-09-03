@@ -4,20 +4,132 @@ readonly PATH_INIT="${HOME}/.config/vim/"
 readonly PATH_SRC="${HOME}/.vim/src/"
 readonly PATH_SRC_UTILS="${HOME}/.vim/src/utils/"
 readonly PATH_SRC_SETTING_PLUGINS="${HOME}/.vim/src/setting_plugins/"
+readonly TEMP_OUT="${HOME}/.temp_out_vim_install"
+readonly TEMP_ERR="${HOME}/.temp_err_vim_install"
+readonly VER_INFO="Version 1.1.0"
+readonly HELP="
+Usage: sudo ./build_config_vim [OPTION]...
+  or:  ./build_config_vim [OPTION]...
+  or:  sudo bash ./build_config_vim [OPTION]...
+  or:  bash ./build_config_vim [OPTION]...
 
-if [ "$(which nvim | wc --bytes)" -eq 0 ]; then
-	sudo apt-get update \
-		; apt-get -y install neovim \
-		; sudo apt-get -y install python-neovim \
-		; sudo apt-get -y install python3-neovim 2> /dev/null 1> /dev/null &
+Set enviroment to nvim or vim.
+
+Mandatory arguments to long options are mandatory for short options too.
+  -U, --without-update           Install configuration whithout auto update.
+  -P, --without-plugins          Install the configuration without Plug
+                                 and plauguns.
+  -V, --dev-mode                 Revome the all configuration
+  -R, --remove-all               Revome the all configuration
+  -S, --silent                   Never print run information.
+  -s, --save-mode                Explain and ask for confirmation for each
+                                 action.
+  -r, --remove                   Remove only the modules from the vim
+                                 configuration.
+  -d, --dependencies             Show the dependencies it needs to work
+                                 properly and the ones it will install.
+  -t, --report[=FILE]            Details of the current state of the vim.
+                                 configuration and optional save in a file
+  -x, --user-interface           Show details and avanced whith terminal UI
+  -i, --install                  Install in the like a exacutable.
+  -a, --always-update            Upgrade the environment by installing/upgrading
+                                 packages only when load a profile.
+  -n, --normal-update            Upgrade the environment by installing/upgrading
+                                 packages only when have change in the repo of
+                                 the configuration.
+  -u, --user=USER                Change the user in which it will be installed.
+  -c, --change-dir=DIR           Change the installation directory to DIR.
+  -f, --force                    Force install nvim.
+  -h  --help                     Display this help and exit.
+  -v  --version                  Output version information and exit.
+  -m  --install-man-page         Install man of current.
+  -D  --disable=packeges         Disable a module from the vim configuration.
+
+Full documentation at: <https://github.com/JuanDAC/my_vim_config/tree/main/documentation>
+"
+
+dr=''
+install=false
+skip=false
+for op in "$@";do
+	if $skip; then
+		skip=false;
+		continue;
+	fi
+	case "$op" in
+		-v|--version)
+			echo "$VER_INFO"
+			shift
+			exit 0
+			;;
+		-h|--help)
+			echo "$HELP"
+			shift
+			exit 0
+			;;
+		-dr|--doc-root)
+			shift
+			if [[ "$1" != "" ]]; then
+				dr="${1/%\//}"
+				shift
+				skip=true
+			else
+				echo "E: Arg missing for -dr option"
+				exit 1
+			fi
+			;;
+		-i|--install)
+			install=true
+			shift
+			;;
+		-*)
+			echo "E: Invalid option: $1"
+			shift
+			exit 1
+			;;
+	esac
+done
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SU=""
+if [[ "$(whoami)" == "root" ]]; then
+	SU="sudo"
 fi
-if [ "$(which nvim | wc --bytes)" -eq 0 ]; then
-	sudo apt update \
-	 	; apt -y install neovim \
-		; sudo apt -y install python-neovim \
-		; sudo apt -y install python3-neovim 2> /dev/null 1> /dev/null &
+
+nvim --version 2> "$TEMP_ERR" 1> "$TEMP_OUT"
+
+if [ "$(wc --lines -- "$TEMP_OUT")" -eq 0 ]; then
+	$SU apt-get update
+	$SU apt-get -y install neovim
+	$SU apt-get -y install python-neovim
+	$SU apt-get -y install python3-neovim 2> /dev/null 1> /dev/null
 fi
-if [ "$(which nvim | wc --bytes)" -eq 0 ]; then
+
+nvim --version 2> "$TEMP_ERR" 1> "$TEMP_OUT"
+
+if [ "$(wc --lines -- "$TEMP_OUT")" -eq 0 ]; then
+	$SU apt update
+	$SU apt -y install neovim
+	$SU apt -y install python-neovim
+	$SU apt -y install python3-neovim 2> /dev/null 1> /dev/null
+fi
+
+nvim --version 2> "$TEMP_ERR" 1> "$TEMP_OUT"
+
+if [ "$(wc --lines -- "$TEMP_OUT")" -eq 0 ]; then
 	curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage 2> /dev/null 1> /dev/null &
 	chmod u+x nvim.appimage 2> /dev/null 1> /dev/null &
 	./nvim.appimage --appimage-extract 2> /dev/null 1> /dev/null &
