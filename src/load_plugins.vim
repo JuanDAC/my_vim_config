@@ -22,6 +22,8 @@ function! LoadPluguins()
     Plug 'scrooloose/nerdtree'
     Plug 'christoomey/vim-tmux-navigator'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    " Query the Mozilla Developer Network documentation without leaving Vim. 
+    Plug 'jungomi/vim-mdnquery'
     " vimscript
     Plug 'junegunn/vader.vim'
 
@@ -37,6 +39,9 @@ function! LoadPluguins()
 
     Plug 'JuanDAC/betty-ale-vim'|       "Program
     Plug 'dense-analysis/ale'|          "ALE is a prerequisite
+
+    " test vim
+    Plug 'junegunn/vader.vim'
 
     if has('nvim')
         Plug 'morhetz/gruvbox'
