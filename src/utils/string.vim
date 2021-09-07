@@ -108,6 +108,6 @@ endfunction
 
 
 " echo StringCamelCase('hello__peter hola piter')
-echo StringCamelCase('hello__peter-hola piter')
-echo StringWords('hello__peter_hola piter')
+" echo StringCamelCase('hello__peter-hola piter')
+" echo StringWords('hello__peter_hola piter')
 
