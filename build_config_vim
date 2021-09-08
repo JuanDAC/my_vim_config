@@ -30,6 +30,7 @@ readonly PATH_FILES=('events.vim' 'features.vim' 'index.vim' 'load_plugins.vim' 
 'scheme.vim' 'settings.vim' 'variables.vim' 'mappings.vim' \
 'setting_plugins/ale.vim' 'setting_plugins/coc.vim' 'setting_plugins/emmet.vim' \
 'setting_plugins/index.vim' 'setting_plugins/nerd_tree.vim' \
+'setting_plugins/mdn_query.vim' \
 'utils/index.vim' 'utils/string.vim')
 
 rm -rf "$PATH_SRC"

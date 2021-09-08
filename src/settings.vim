@@ -109,8 +109,6 @@ augroup go
 augroup END
 
 " ale
-:call extend(g:ale_linters, {
-    \"go": ['golint', 'go vet'], })
 
 
 " haskell
@@ -147,8 +145,6 @@ let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
 execute "set rtp+=" . g:opamshare . "/merlin/vim"
 
 " ale
-:call extend(g:ale_linters, {
-    \'ocaml': ['merlin'], })
 
 
 " perl
@@ -202,8 +198,6 @@ let g:jedi#completions_command = "<C-Space>"
 let g:jedi#smart_auto_mappings = 0
 
 " ale
-:call extend(g:ale_linters, {
-    \'python': ['flake8'], })
 
 " vim-airline
 let g:airline#extensions#virtualenv#enabled = 1
