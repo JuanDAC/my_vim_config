@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 readonly PATH_HOME="${HOME}/"
 readonly PATH_INIT="${HOME}/.config/vim/"
+readonly PATH_NINIT="${HOME}/.config/nvim/"
 readonly PATH_SRC="${HOME}/.vim/src/"
 readonly PATH_SRC_UTILS="${HOME}/.vim/src/utils/"
 readonly PATH_SRC_SETTING_PLUGINS="${HOME}/.vim/src/setting_plugins/"
@@ -36,14 +37,18 @@ readonly PATH_FILES=('events.vim' 'features.vim' 'index.vim' 'load_plugins.vim' 
 rm -rf "$PATH_SRC"
 rm -f "${PATH_HOME}.vimrc"
 rm -f "${PATH_INIT}init.vim"
+rm -f "${PATH_NINIT}init.vim"
+
 
 mkdir -p "$PATH_HOME"
 mkdir -p "$PATH_INIT"
+mkdir -p "$PATH_NINIT"
 mkdir -p "$PATH_SRC"
 mkdir -p "$PATH_SRC_UTILS"
 mkdir -p "$PATH_SRC_SETTING_PLUGINS"
 
 wget --no-verbose --directory-prefix="$PATH_INIT" 'https://raw.githubusercontent.com/JuanDAC/my_vim_config/main/init.vim' &> /dev/null &
+wget --no-verbose --directory-prefix="$PATH_NINIT" 'https://raw.githubusercontent.com/JuanDAC/my_vim_config/main/init.vim' &> /dev/null &
 wget --no-verbose --directory-prefix="$PATH_HOME" 'https://raw.githubusercontent.com/JuanDAC/my_vim_config/main/.vimrc' &> /dev/null &
 
 for i in "${!PATH_FILES[@]}"; do
