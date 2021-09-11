@@ -32,7 +32,6 @@ function! LoadPluguins()
     Plug 'tpope/vim-rhubarb' " required by fugitive to :Gbrowse
     Plug 'tomasiser/vim-code-dark'
 
-
     if isdirectory('/usr/local/opt/fzf')
       Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
     else
@@ -196,7 +195,6 @@ function! LoadPluguins()
     Plug 'easymotion/vim-easymotion'
     Plug 'scrooloose/nerdtree'
     Plug 'christoomey/vim-tmux-navigator'
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
     " Query the Mozilla Developer Network documentation without leaving Vim. 
     Plug 'jungomi/vim-mdnquery'
     " vimscript
