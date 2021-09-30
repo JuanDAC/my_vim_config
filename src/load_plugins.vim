@@ -15,6 +15,8 @@ function! LoadPluguins()
     "*****************************************************************************
     "" Plug install packages
     "*****************************************************************************
+    Plug 'dart-lang/dart-vim-plugin'
+    Plug 'thosakwe/vim-flutter'
     Plug 'scrooloose/nerdtree'
     Plug 'jistr/vim-nerdtree-tabs'
     Plug 'tpope/vim-commentary'

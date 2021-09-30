@@ -12,6 +12,7 @@ nnoremap <Leader>q :q<CR>
 nnoremap <Leader>Q :qa<CR>
 nnoremap <Leader>e :e
 vmap Y :call YTC()<CR>
+vmap T <s-lt><s-gt>
 
 nnoremap <up> <nop>
 nnoremap <down> <nop>
